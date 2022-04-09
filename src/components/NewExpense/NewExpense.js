@@ -3,10 +3,15 @@ import ExpenseForm from './ExpenseForm';
 
 import './NewExpense.css';
 
-function NewExpense() {
+function NewExpense(props) {
+  function loadData(expenseData) {
+    props.onAddExpense(expenseData);
+    // console.log(expenseData);
+  }
+
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onSaveGetData={loadData} />
     </div>
   );
 }
