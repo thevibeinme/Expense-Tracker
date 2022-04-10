@@ -20,6 +20,7 @@ function ExpenseForm(props) {
   const submitHandler = (event) => {
     event.preventDefault();
     const expenseData = {
+      id: Math.floor(Math.random() * 100),
       title: originalTitle,
       amount: originalAmount,
       date: new Date(originalDate).toString(),

@@ -1,5 +1,7 @@
 // import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ExpenseFilter from './components/Expenses/EpenseFilter';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 
@@ -30,12 +32,14 @@ function App() {
       date: new Date(2022, 4, 6),
     },
   ];
-
+  const [expensesFirst, setExpenses] = useState(expenses);
   const addExpenseHandler = (expenseData) => {
+    setExpenses((prevExpense) => {
+      return [expenseData, ...prevExpense];
+    });
     console.log('Main App');
     console.log(expenseData);
   };
-
   return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
