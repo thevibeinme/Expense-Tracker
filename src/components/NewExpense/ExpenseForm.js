@@ -20,10 +20,10 @@ function ExpenseForm(props) {
   const submitHandler = (event) => {
     event.preventDefault();
     const expenseData = {
-      id: Math.floor(Math.random() * 100),
+      id: Math.floor(Math.random() * 100).toString(),
       title: originalTitle,
       amount: originalAmount,
-      date: new Date(originalDate).toString(),
+      date: new Date(originalDate),
     };
     setOriginalAmount('');
     setOriginalDate('');
@@ -36,6 +36,10 @@ function ExpenseForm(props) {
     // console.log(event.target[0].value);
     // console.log(event.target[1].value);
     // console.log(event.target[2].value);
+  };
+
+  const editDisplayForm = () => {
+    props.displayHandlerCancel(false);
   };
 
   return (
@@ -71,6 +75,9 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={editDisplayForm} type="button">
+          Cancel
+        </button>
         <button type="submit">Submit</button>
       </div>
     </form>
